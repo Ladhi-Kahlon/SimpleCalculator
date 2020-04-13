@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SimpleCalculator
 {
-    class MathOperDesc
+    public class MathOperDesc
     {
         public string TypeDescription(string inputValue)
         {

@@ -2,7 +2,7 @@
 
 namespace SimpleCalculator
 {
-    class CalculateEngine
+    public class CalculateEngine
     {
         public double Calculate(string argOperation, double numValue1, double numValue2)
         {
