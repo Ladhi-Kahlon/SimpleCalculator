@@ -6,14 +6,12 @@ namespace SimpleCalculator
     {
         public double ToDouble(string inputValue)
         {
-            double returnValue;
-
             if (string.IsNullOrEmpty(inputValue))
             {
-                throw new ArgumentNullException("Input value required");
+                throw new ArgumentNullException(nameof(inputValue));
             }
 
-            if (!double.TryParse(inputValue, out returnValue))
+            if (!double.TryParse(inputValue, out var returnValue))
             {
                 throw new ArgumentException("Expected a numeric value");
             }

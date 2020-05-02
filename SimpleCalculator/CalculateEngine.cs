@@ -6,25 +6,15 @@ namespace SimpleCalculator
     {
         public double Calculate(string argOperation, double numValue1, double numValue2)
         {
-            double resultValue;
-
-            switch (argOperation.ToLower())
+            const double tolerance = 0;
+            var resultValue = argOperation.ToLower() switch
             {
-                case "+" :
-                    resultValue = numValue1 + numValue2;
-                    break;
-                case "-":
-                    resultValue = numValue1 - numValue2;
-                    break;
-                case "*":
-                    resultValue = numValue1 * numValue2;
-                    break;
-                case "/":              
-                    resultValue = numValue2 == 0 ? 0 : numValue1 / numValue2;
-                    break;
-                default:
-                    throw new InvalidOperationException("Specified operation is not recognized");
-            }
+                "+" => numValue1 + numValue2,
+                "-" => numValue1 - numValue2,
+                "*" => numValue1 * numValue2,
+                "/" => Math.Abs(numValue2) < tolerance ? 0 : numValue1 / numValue2,
+                _ => throw new InvalidOperationException("Specified operation is not recognized")
+            };
 
             return resultValue;
         }

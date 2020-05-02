@@ -11,8 +11,8 @@ namespace SimpleCalculator.Test.MSUnit
         [TestMethod]
         public void ConvertInputStringIntoDecimal()
         {
-            string input = "99";
-            double result = _inputConverter.ToDouble(input);
+            const string input = "99";
+            var result = _inputConverter.ToDouble(input);
 
             Assert.AreEqual(99, result);
         }

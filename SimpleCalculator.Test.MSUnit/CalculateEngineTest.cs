@@ -11,11 +11,11 @@ namespace SimpleCalculator.Test.MSUnit
         [TestMethod]
         public void TestCalculateEngineMethod()
         {
-            int num1 = 1;
-            int num2 = 2;
-            string opr = "+";
+            const int num1 = 1;
+            const int num2 = 2;
+            const string opr = "+";
 
-            double result = _calEngine.Calculate(opr, num1, num2);
+            var result = _calEngine.Calculate(opr, num1, num2);
 
             Assert.AreEqual(3, result);
         }
@@ -24,9 +24,9 @@ namespace SimpleCalculator.Test.MSUnit
         [ExpectedException(typeof(InvalidOperationException))]
         public void TestExpectedException()
         {
-            int num1 = 1;
-            int num2 = 2;
-            string opr = "&&";
+            const int num1 = 1;
+            const int num2 = 2;
+            const string opr = "&&";
 
             _calEngine.Calculate(opr, num1, num2);
         }

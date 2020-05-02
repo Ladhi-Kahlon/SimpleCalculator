@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SimpleCalculator
 {
@@ -13,11 +11,11 @@ namespace SimpleCalculator
                 case "+":
                     return "Add";
                 case "-":
-                    return "Substract";
+                    return "Subtract";
                 case "/":
                     return "Divide";
                 case "*":
-                    return "Mutliply";
+                    return "Multiply";
                 default:
                     throw new InvalidOperationException("Invalid Operation Symbol");
             }

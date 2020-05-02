@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace SimpleCalculator
 {
@@ -6,26 +7,25 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-            bool endCalc = false;
             Console.WriteLine("Simple Calculator App:");
 
-            while (!endCalc)
+            while (true)
             {
                 try
                 {
-                    InputConverter converter = new InputConverter();
-                    CalculateEngine calEngine = new CalculateEngine();
+                    var converter = new InputConverter();
+                    var calEngine = new CalculateEngine();
                     Console.WriteLine("\n");
 
                     Console.Write("Enter First Value: ");
-                    double firstParam = converter.ToDouble(Console.ReadLine());
+                    var firstParam = converter.ToDouble(Console.ReadLine());
                     Console.Write("Enter Second Value: ");
-                    double secondParam = converter.ToDouble(Console.ReadLine());
+                    var secondParam = converter.ToDouble(Console.ReadLine());
                     Console.Write("Enter Operation \"+\", \"-\", \"*\" or \"/\": ");
-                    string operation = Console.ReadLine();
-                    double result = calEngine.Calculate(operation, firstParam, secondParam);
+                    var operation = Console.ReadLine();
+                    var result = calEngine.Calculate(operation, firstParam, secondParam);
                    
-                    Console.WriteLine(@"Result for {0} {1} {2} = {3}", firstParam.ToString(), operation, secondParam.ToString(), result);
+                    Console.WriteLine(@"Result for {0} {1} {2} = {3}", firstParam.ToString(CultureInfo.InvariantCulture), operation, secondParam.ToString(CultureInfo.InvariantCulture), result);
                 }
                 catch (Exception ex)
                 {
@@ -34,15 +34,31 @@ namespace SimpleCalculator
                 }
 
                 Console.WriteLine("Enter n to Exit Application");
-                if (Console.ReadLine().ToLower() == "n")
-                {
-                    endCalc = true;
-                    break;
-                }
+                if (Console.ReadLine()?.ToLower() != "n") continue;
+                break;
             }
 
             Console.WriteLine("Thank You!");
             //Console.ReadKey();
         }
+
+        //bool continueProgram = true;
+        //do
+        //{
+        //    //do something 
+        //    Console.WriteLine("Welcome Message");
+        //    //Check if user want to continue (Required answer Y for Yes and N for No
+        //    string contintueProgramDecision = string.Empty;
+        //    do
+        //    {
+        //        Console.Write("Do you wat to continue? Y/N: ");
+        //        contintueProgramDecision = Console.ReadLine() ?? string.Empty;
+
+        //    } while (!contintueProgramDecision.Equals("Y", StringComparison.OrdinalIgnoreCase)
+        //            && !contintueProgramDecision.Equals("N", StringComparison.OrdinalIgnoreCase));
+
+        //    continueProgram = contintueProgramDecision.Equals("Y", StringComparison.OrdinalIgnoreCase);
+
+        //} while (continueProgram);
     }
 }
